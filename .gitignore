@@ -1,0 +1,8 @@
+## OSX
+.DS_store
+
+## not even once
+keys.py
+
+## relleno
+__pycache__
