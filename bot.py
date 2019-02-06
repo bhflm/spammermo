@@ -11,9 +11,10 @@ def gedear():
 
     msg = MIMEMultipart()
     msg['From'] = userEmail
-    msg['To'] = emailTarget
+    msg['To'] = ", ".join(targets) #multiple recipients: targets should be an array of emails for it to work.
+    #msg['To'] = targets >>> this should be a single email in case gedear is chilly
     msg['Subject'] = 'D A N K  D O G G O'
-    body = 'G O O D   B O I I I <3' 
+    body = 'G O O D   B O I I I <3' # WHOS A GOOD BOIIII ???? <3
     msg.attach(MIMEText(body,'plain'))
 
     filename = pic
@@ -32,7 +33,12 @@ def gedear():
     server = smtplib.SMTP(googleHost, googlePort)
     server.starttls()
     server.login(userEmail, userPassword)
-    server.sendmail(userEmail, emailTarget, text)
+    server.sendmail(userEmail, targets, text)
     server.quit()
 
-gedear()
+# #evil purposes:
+# # def main():
+# #     for x in range (5):
+# #         print("going for the " + str(x) + "nth SEXY TIME")
+# #         gedear()
+# main()
