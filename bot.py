@@ -13,8 +13,8 @@ def gedear():
     msg['From'] = userEmail
     msg['To'] = ", ".join(targets) #multiple recipients: targets should be an array of emails for it to work.
     #msg['To'] = targets >>> this should be a single email in case gedear is chilly
-    msg['Subject'] = 'D A N K  D O G G O'
-    body = 'G O O D   B O I I I <3' # WHOS A GOOD BOIIII ???? <3
+    msg['Subject'] = customSubject
+    body = customBody # WHOS A GOOD BOIIII ???? <3
     msg.attach(MIMEText(body,'plain'))
 
     filename = pic
@@ -35,10 +35,3 @@ def gedear():
     server.login(userEmail, userPassword)
     server.sendmail(userEmail, targets, text)
     server.quit()
-
-# #evil purposes:
-# # def main():
-# #     for x in range (5):
-# #         print("going for the " + str(x) + "nth SEXY TIME")
-# #         gedear()
-# main()
