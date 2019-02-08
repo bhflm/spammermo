@@ -1,11 +1,19 @@
 import smtplib
 import os
+import random
 from keys import *
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.base import MIMEBase
 from email import encoders
+
+
+def getRandomPic():
+    files = []
+    for filename in os.listdir(directory):
+        files.append(filename)
+    return str(directory + random.choice(files))
 
 def gedear():
 
@@ -14,10 +22,10 @@ def gedear():
     msg['To'] = ", ".join(targets) #multiple recipients: targets should be an array of emails for it to work.
     #msg['To'] = targets >>> this should be a single email in case gedear is chilly
     msg['Subject'] = customSubject
-    body = customBody # WHOS A GOOD BOIIII ???? <3
+    body = customBody
     msg.attach(MIMEText(body,'plain'))
 
-    filename = pic
+    filename = getRandomPic()
     attachment = open(filename,'rb')
 
     # all the encoding bs for uploading just a simple jpg to an email with MIME
@@ -35,3 +43,5 @@ def gedear():
     server.login(userEmail, userPassword)
     server.sendmail(userEmail, targets, text)
     server.quit()
+
+gedear()
