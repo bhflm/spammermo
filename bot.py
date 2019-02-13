@@ -1,6 +1,7 @@
 import smtplib
 import os
 import random
+from os import environ
 from flask import Flask
 from keys import *
 from email.mime.multipart import MIMEMultipart
@@ -11,7 +12,7 @@ from email import encoders
 
 def start():
     app = Flask(__name__)
-    app.run(environ.get('PORT'))
+    app.run(host= '0.0.0.0', port=environ.get('PORT'))
 
 def getRandomPic():
     files = []
