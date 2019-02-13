@@ -1,6 +1,7 @@
 import smtplib
 import os
 import random
+from flask import Flask
 from keys import *
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -8,6 +9,9 @@ from email.mime.image import MIMEImage
 from email.mime.base import MIMEBase
 from email import encoders
 
+def start():
+    app = Flask(__name__)
+    app.run(environ.get('PORT'))
 
 def getRandomPic():
     files = []
@@ -16,7 +20,7 @@ def getRandomPic():
     return str(directory + random.choice(files))
 
 def gedear():
-
+    start()
     msg = MIMEMultipart()
     msg['From'] = userEmail
     msg['To'] = ", ".join(targets) #multiple recipients: targets should be an array of emails for it to work.
